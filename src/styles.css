@@ -1,0 +1,26 @@
+h3 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-block-start: 4px;
+  margin-block-end: 2px;
+}
+
+.App {
+  font-family: "Segoe UI", sans-serif;
+  display: grid;
+  grid-template-areas: "note";
+  margin: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.Note {
+  background: #fff;
+  font-size: 16px;
+  grid-area: note;
+  line-height: 1.75;
+  padding: 8px;
+}
