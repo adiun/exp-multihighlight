@@ -1,5 +1,5 @@
 import React from "react";
-import LayersImage from "./layers.png";
+import LayersImage from "./layers2.png";
 import "./layerButton.css";
 
 class LayerButton extends React.Component {
