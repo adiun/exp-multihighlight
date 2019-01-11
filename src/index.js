@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LayersImage from "./layers.png";
 import LayerButton from "./layerButton";
 import "./styles.css";
 import Span from "./span";
