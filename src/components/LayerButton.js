@@ -11,8 +11,11 @@ class LayerButton extends React.Component {
           <Button onClick={this.props.onClickMainBtn}>
             <img src={LayersImage} alt="layers" height="30" />
           </Button>
-        </ButtonContainerMain>
-        <ButtonContainer isExpanded={this.props.expanded}>
+        </ButtonContainerMain
+        <ButtonContainer
+          isExpanded={this.props.expanded}
+          onClick={() => this.props.onClickLayer("md")}
+        >
           <ButtonCaption>MD</ButtonCaption>
           <Button>
             <Square color="rgb(52, 152, 219)" />
@@ -21,6 +24,7 @@ class LayerButton extends React.Component {
         <ButtonContainer
           animationDelay="100ms"
           isExpanded={this.props.expanded}
+          onClick={() => this.props.onClickLayer("narrative")}
         >
           <ButtonCaption>Narrative</ButtonCaption>
           <Button>
@@ -30,6 +34,7 @@ class LayerButton extends React.Component {
         <ButtonContainer
           animationDelay="200ms"
           isExpanded={this.props.expanded}
+          onClick={() => this.props.onClickLayer("ehr")}
         >
           <ButtonCaption>EHR</ButtonCaption>
           <Button>
