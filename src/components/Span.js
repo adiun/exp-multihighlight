@@ -20,7 +20,8 @@ const backgroundColor = {
 };
 
 const border = {
-  /*md: "3px solid rgb(52, 152, 219);"*/
+  md: "3px solid transparent;",
+  ehr: "6px solid transparent;"
 };
 
 const boxShadow = {
@@ -56,6 +57,7 @@ const SpanUnderline = styled.span`
     props.enabled
       ? `
   box-shadow: ${boxShadow[props.type]};
+  border-bottom: ${border[props.type]};
   `
       : ""}
 `;
