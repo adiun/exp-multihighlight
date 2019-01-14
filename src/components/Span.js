@@ -28,7 +28,8 @@ const border = {
 
 const boxShadow = {
   narrative: "0 3px 0 0 rgb(241, 196, 15);",
-  md: "0 3px 0 0 rgb(52, 152, 219);"
+  md: "0 3px 0 0 rgb(52, 152, 219);",
+  ehr: "0 3px 0 0 rgb(231, 76, 60);"
 };
 
 const Span = props => {
@@ -63,13 +64,17 @@ const SpanUnderline = styled.span`
 `;
 
 const SpanUnderlineExceptFirst = styled.span`
+  transition: background-color 500ms ease-out, box-shadow 500ms ease-out;
   ${props =>
     props.enabled
       ? `
   background-color: ${backgroundColor[props.type]};
   box-shadow: ${boxShadow[props.type]};
 `
-      : ""}
+      : `
+      background-color: inherit;
+  box-shadow: none;
+`}
 `;
 
 export default Span;
