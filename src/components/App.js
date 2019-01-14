@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Note } from "./Note";
 import LayerButton from "./LayerButton";
-import Span from "./span";
+import Span from "./Span";
 
 export class App extends React.Component {
   state = {
