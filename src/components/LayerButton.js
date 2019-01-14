@@ -5,7 +5,7 @@ import LayersImage from "./layers2.png";
 class LayerButton extends React.Component {
   render() {
     return (
-      <Layout>
+      <Layout isExpanded={this.props.expanded}>
         <ButtonContainerMain>
           <ButtonCaption />
           <Button onClick={this.props.onClickMainBtn}>
@@ -51,18 +51,42 @@ const Layout = styled.div`
   bottom: 30px;
   display: flex;
   flex-direction: column-reverse;
+  padding: 40px 0 0 40px;
   position: fixed;
   right: 30px;
+
+  &::before {
+    background: linear-gradient(
+      to top left,
+      white 0%,
+      white 50%,
+      transparent 100%
+    );
+    bottom: 0;
+    content: "";
+    filter: blur(10px);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: ${props => (props.isExpanded ? "1" : "0")};
+    transform: ${props => (props.isExpanded ? "scaleY(1)" : "scaleY(0)")};
+    transition: opacity 500ms ease-out, transform 500ms ease-out;
+    z-index: -1;
+  }
 `;
 
 const ButtonCaption = styled.div`
+  color: #555;
   font-size: 14px;
+  font-weight: 500;
   justify-self: end;
 `;
 
 const Button = styled.div`
   align-items: center;
   background: #fafafa;
+  border: 1px solid transparent;
   border-radius: 50%;
   box-shadow: 0 5px 10px -2px #ccc;
   cursor: pointer;
@@ -70,11 +94,18 @@ const Button = styled.div`
   height: 40px;
   justify-items: center;
   justify-self: center;
-  transition: box-shadow 250ms ease-out;
+  outline: none;
+  transition: box-shadow 250ms, transform 250ms ease-out;
   width: 40px;
 
+  &:active {
+    transform: translateY(1px);
+  }
+
   &:hover {
+    border: 1px solid #eee;
     box-shadow: 0 10px 10px -2px #cacaca;
+    transform: translateY(-2px);
   }
 `;
 
@@ -121,12 +152,6 @@ const ButtonContainerMain = styled(ButtonContainer)`
     background: #fafafa;
     height: 60px;
     width: 60px;
-    transform: translateY(0);
-    transition: box-shadow 250ms, transform 250ms ease-out;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
   }
 `;
 
