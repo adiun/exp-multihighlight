@@ -11,7 +11,7 @@ class LayerButton extends React.Component {
           <Button onClick={this.props.onClickMainBtn}>
             <img src={LayersImage} alt="layers" height="30" />
           </Button>
-        </ButtonContainerMain>
+        </ButtonContainerMain
         <ButtonContainer
           isExpanded={this.props.expanded}
           onClick={() => this.props.onClickLayer("md")}
