@@ -68,7 +68,7 @@ const Square = styled.div`
   border-radius: 50%;
   opacity: ${props => (props.isExpanded ? "1" : "0")};
   transform: ${props => (props.isExpanded ? "scale(2.5)" : "none")};
-  transition 500ms opacity ease-out, 500ms transform ease-out;
+  transition 250ms opacity ease-out, 250ms transform ease-out;
   width: 10px;
   height: 10px;
 `;

@@ -5,7 +5,7 @@ import LayerButton from "./LayerButton";
 import Span from "./Span";
 import { SpanContext, defaultSpanTheme } from "../context";
 
-const variant = "underline-except-first";
+const variant = "highlight";
 
 export class App extends React.Component {
   state = {
@@ -28,7 +28,11 @@ export class App extends React.Component {
                 <Span variant={variant} type={"narrative"}>
                   Sed cursus ante.{" "}
                   <Span variant={variant} type={"md"}>
-                    Duis sagittis ipsum.
+                    Duis sagittis{" "}
+                    <Span variant={variant} type={"ehr"}>
+                      ipsum
+                    </Span>
+                    .
                   </Span>{" "}
                   Dapibus diam.
                 </Span>

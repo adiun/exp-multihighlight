@@ -16,11 +16,18 @@ const size = {
 };
 
 const backgroundColor = {
-  md: Colors.md
+  narrative: Colors.narrative
+};
+
+const backgroundColorAll = {
+  md: Colors.md,
+  ehr: Colors.ehr,
+  narrative: Colors.narrative
 };
 
 const border = {
-  /*md: "3px solid rgb(52, 152, 219);"*/
+  md: "3px solid transparent;",
+  ehr: "6px solid transparent;"
 };
 
 const boxShadow = {
@@ -43,6 +50,12 @@ const Span = props => {
             );
           case "underline":
             return <SpanUnderline enabled={spanTheme[props.type]} {...props} />;
+          case "highlight-border":
+            return (
+              <SpanHighlightBorder enabled={spanTheme[props.type]} {...props} />
+            );
+          case "highlight":
+            return <SpanHighlight enabled={spanTheme[props.type]} {...props} />;
           default:
             return null;
         }
@@ -51,11 +64,34 @@ const Span = props => {
   );
 };
 
+const SpanHighlight = styled.span`
+  transition: background-color 500ms ease-out;
+  ${props =>
+    props.enabled
+      ? `
+  background-color: ${backgroundColorAll[props.type]};
+  `
+      : ""}
+`;
+
+const SpanHighlightBorder = styled.span`
+  transition: background-color 500ms ease-out;
+  ${props =>
+    props.enabled
+      ? `
+  background-color: ${backgroundColorAll[props.type]};
+  border-bottom: ${border[props.type]};
+  z-index: ${zIndex[props.type]};
+  `
+      : ""}
+`;
+
 const SpanUnderline = styled.span`
   ${props =>
     props.enabled
       ? `
   box-shadow: ${boxShadow[props.type]};
+  border-bottom: ${border[props.type]};
   `
       : ""}
 `;
@@ -66,6 +102,7 @@ const SpanUnderlineExceptFirst = styled.span`
     props.enabled
       ? `
   background-color: ${backgroundColor[props.type]};
+  border-bottom: ${border[props.type]};
   box-shadow: ${boxShadow[props.type]};
 `
       : `
