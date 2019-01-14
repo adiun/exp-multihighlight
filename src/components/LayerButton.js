@@ -20,13 +20,13 @@ class LayerButton extends React.Component {
                 <Square color="rgb(52, 152, 219)" />
               </Button>
             </ButtonContainer>
-            <ButtonContainer animationDelay="100ms">
+            <ButtonContainer animationDelay="50ms">
               <ButtonCaption>Narrative</ButtonCaption>
               <Button>
                 <Square color="rgb(241, 196, 15)" />
               </Button>
             </ButtonContainer>
-            <ButtonContainer animationDelay="200ms">
+            <ButtonContainer animationDelay="100ms">
               <ButtonCaption>EHR</ButtonCaption>
               <Button>
                 <Square color="rgb(231, 76, 60)" />
@@ -40,15 +40,16 @@ class LayerButton extends React.Component {
 }
 
 const Square = styled.div`
+  background: ${props => props.color};
   width: 10px;
   height: 10px;
-  background: ${props => props.color};
 `;
+
 const Layout = styled.div`
+  bottom: 30px;
   display: flex;
   flex-direction: column-reverse;
   position: fixed;
-  bottom: 30px;
   right: 30px;
 `;
 
@@ -58,16 +59,16 @@ const ButtonCaption = styled.div`
 `;
 
 const Button = styled.div`
-  background: #fafafa;
-  box-shadow: 0 5px 10px -2px #ccc;
-  border-radius: 50%;
-  transition: box-shadow 250ms ease-out;
-  display: grid;
-  justify-items: center;
   align-items: center;
+  background: #fafafa;
+  border-radius: 50%;
+  box-shadow: 0 5px 10px -2px #ccc;
   cursor: pointer;
-  justify-self: center;
+  display: grid;
   height: 40px;
+  justify-items: center;
+  justify-self: center;
+  transition: box-shadow 250ms ease-out;
   width: 40px;
 
   &:hover {
@@ -83,17 +84,17 @@ const ButtonContainerAppearKeyframes = keyframes`
 `;
 
 const ButtonContainer = styled.div`
+  align-items: center;
+  animation-delay: ${props => props.animationDelay};
+  animation-duration: 250ms;
+  animation-fill-mode: backwards;
+  animation-name: ${ButtonContainerAppearKeyframes};
+  animation-timing-function: ease-out;
+  border-bottom: 8px solid transparent;
+  border-top: 8px solid transparent;
   display: grid;
   grid-template-columns: 1fr 60px;
-  align-items: center;
-  animation-name: ${ButtonContainerAppearKeyframes};
-  animation-duration: 250ms;
-  animation-timing-function: ease-out;
-  animation-delay: ${props => props.animationDelay};
-  animation-fill-mode: backwards;
-
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
+  user-select: none;
 `;
 
 const ButtonContainerMain = styled(ButtonContainer)`
@@ -101,10 +102,10 @@ const ButtonContainerMain = styled(ButtonContainer)`
 
   & > ${Button} {
     background: #fafafa;
-    transform: translateY(0);
-    transition: box-shadow 250ms, transform 250ms ease-out;
     height: 60px;
     width: 60px;
+    transform: translateY(0);
+    transition: box-shadow 250ms, transform 250ms ease-out;
 
     &:hover {
       transform: translateY(-2px);
