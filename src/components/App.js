@@ -42,16 +42,30 @@ export class App extends React.Component {
             <h3>Review of Systems</h3>
             <ul>
               <li>
-                Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.
+                <Span variant={variant} type={"ehr"}>
+                  Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.
+                </Span>
               </li>
-              <li>Maecenas mattis.</li>
-              <li>Sed convallis tristique sem.</li>
+              <li>
+                <Span variant={variant} type={"ehr"}>
+                  Maecenas mattis.
+                </Span>
+              </li>
+              <li>
+                <Span variant={variant} type={"ehr"}>
+                  Sed convallis tristique sem.
+                </Span>
+              </li>
               <li>Proin ut ligula vel nunc egestas porttitor.</li>
               <li>
                 Morbi lectus risus, iaculis vel, suscipit quis, luctus non,
                 massa.
               </li>
-              <li>Fusce ac turpis quis ligula lacinia aliquet.</li>
+              <li>
+                <Span variant={variant} type={"ehr"}>
+                  Fusce ac turpis quis ligula lacinia aliquet.
+                </Span>
+              </li>
               <li>Mauris ipsum.</li>
             </ul>
             <h3>Assessment</h3>
