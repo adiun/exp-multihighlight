@@ -1,37 +1,37 @@
 import React from "react";
-import Yellow from "./yellow.png";
-import Blue from "./blue.png";
+import Yellow from "./narrative.png";
+import Blue from "./md.png";
 import styled from "styled-components";
 
 const colors = {
-  yellow: `url(${Yellow})`,
-  blue: `url(${Blue})`,
-  red: "rgb(231, 76, 60)"
+  narrative: `url(${Yellow})`,
+  md: `url(${Blue})`,
+  ehr: "rgb(231, 76, 60)"
 };
 
 const zIndex = {
-  yellow: 1,
-  blue: 2,
-  red: 3
+  narrative: 1,
+  md: 2,
+  ehr: 3
 };
 
 const size = {
-  yellow: "20px 23px",
-  blue: "20px 21px",
-  red: "0 0"
+  narrative: "20px 23px",
+  md: "20px 21px",
+  ehr: "0 0"
 };
 
 const backgroundColor = {
-  blue: "rgb(52, 152, 219);"
+  md: "rgb(52, 152, 219);"
 };
 
 const border = {
-  /*blue: "3px solid rgb(52, 152, 219);"*/
+  /*md: "3px solid rgb(52, 152, 219);"*/
 };
 
 const boxShadow = {
-  yellow: "0 3px 0 0 rgb(241, 196, 15);",
-  blue: "0 3px 0 0 rgb(52, 152, 219);"
+  narrative: "0 3px 0 0 rgb(241, 196, 15);",
+  md: "0 3px 0 0 rgb(52, 152, 219);"
 };
 
 const Span = (props) => {

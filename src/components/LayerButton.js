@@ -14,19 +14,19 @@ class LayerButton extends React.Component {
         </ButtonContainerMain>
         {this.props.expanded && (
           <>
-            <ButtonContainer>
+            <ButtonContainer onClick={() => this.props.onClickLayer('md')}>
               <ButtonCaption>MD</ButtonCaption>
               <Button>
                 <Square color="rgb(52, 152, 219)" />
               </Button>
             </ButtonContainer>
-            <ButtonContainer animationDelay="100ms">
+            <ButtonContainer animationDelay="100ms" onClick={() => this.props.onClickLayer('narrative')}>
               <ButtonCaption>Narrative</ButtonCaption>
               <Button>
                 <Square color="rgb(241, 196, 15)" />
               </Button>
             </ButtonContainer>
-            <ButtonContainer animationDelay="200ms">
+            <ButtonContainer animationDelay="200ms" onClick={() => this.props.onClickLayer('ehr')}>
               <ButtonCaption>EHR</ButtonCaption>
               <Button>
                 <Square color="rgb(231, 76, 60)" />
