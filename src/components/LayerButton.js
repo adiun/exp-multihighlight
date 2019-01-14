@@ -13,7 +13,7 @@ class LayerButton extends React.Component {
             <LayersImage spanTheme={this.props.spanTheme} />
           </Button>
         </ButtonContainerMain>
-
+      
         <ButtonContainer
           isExpanded={this.props.expanded}
           onClick={() => this.props.onClickLayer("ehr")}

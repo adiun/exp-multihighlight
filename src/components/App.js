@@ -5,7 +5,7 @@ import LayerButton from "./LayerButton";
 import Span from "./Span";
 import { SpanContext, defaultSpanTheme } from "../context";
 
-const variant = "highlight";
+const variant = "underline";
 
 export class App extends React.Component {
   state = {
