@@ -34,10 +34,23 @@ const boxShadow = {
   blue: "0 3px 0 0 rgb(52, 152, 219);"
 };
 
-const Span = styled.span`
+const Span = (props) => {
+  switch (props.variant) {
+    case 'underline-except-first':
+      return <SpanUnderlineExceptFirst { ...props } />
+    case 'underline':
+      return <SpanUnderline { ...props } />
+  }
+}
+
+const SpanUnderline = styled.span`
+  box-shadow: ${props => boxShadow[props.type]};
+`;
+
+const SpanUnderlineExceptFirst = styled.span`
   background-color: ${props => backgroundColor[props.type]};
-  border-bottom: ${props => border[props.type]};
   box-shadow: ${props => boxShadow[props.type]};
 `;
 
 export default Span;
+

@@ -4,6 +4,7 @@ import { Note } from "./Note";
 import LayerButton from "./LayerButton";
 import Span from "./Span";
 
+const variant = 'underline-except-first'
 export class App extends React.Component {
   state = {
     expandedLayerButton: false
@@ -20,8 +21,8 @@ export class App extends React.Component {
               nec odio. Praesent libero.
             </li>
             <li>
-              <Span type="yellow">
-                Sed cursus ante. <Span type="blue">Duis sagittis ipsum.</Span>{" "}
+              <Span type="yellow" variant={variant}>
+                Sed cursus ante. <Span type="blue" variant={variant}>Duis sagittis ipsum.</Span>{" "}
                 Dapibus diam.
               </Span>
             </li>
