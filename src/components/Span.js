@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { SpanContext } from "../context";
-
-const colors = {
-  ehr: "rgb(231, 76, 60)"
-};
+import { Colors } from "../colors";
 
 const zIndex = {
   narrative: 1,
@@ -19,17 +16,18 @@ const size = {
 };
 
 const backgroundColor = {
-  md: "rgb(52, 152, 219);"
+  md: Colors.md
 };
 
 const border = {
-  /*md: "3px solid rgb(52, 152, 219);"*/
+  md: "3px solid transparent;",
+  ehr: "6px solid transparent;"
 };
 
 const boxShadow = {
-  narrative: "0 3px 0 0 rgb(241, 196, 15);",
-  md: "0 3px 0 0 rgb(52, 152, 219);",
-  ehr: "0 3px 0 0 rgb(231, 76, 60);"
+  narrative: `0 3px 0 0 ${Colors.narrative};`,
+  md: `0 3px 0 0 ${Colors.md};`,
+  ehr: `0 3px 0 0 ${Colors.ehr};`
 };
 
 const Span = props => {
@@ -59,6 +57,7 @@ const SpanUnderline = styled.span`
     props.enabled
       ? `
   box-shadow: ${boxShadow[props.type]};
+  border-bottom: ${border[props.type]};
   `
       : ""}
 `;

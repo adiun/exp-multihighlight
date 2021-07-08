@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import LayersImage from "./layers2.png";
+import { Colors } from "../colors";
+import { SpanContext } from "../context";
 
 class LayerButton extends React.Component {
   render() {
@@ -9,36 +10,52 @@ class LayerButton extends React.Component {
         <ButtonContainerMain>
           <ButtonCaption />
           <Button onClick={this.props.onClickMainBtn}>
-            <img src={LayersImage} alt="layers" height="30" />
+            <LayersImage spanTheme={this.props.spanTheme} />
           </Button>
-        </ButtonContainerMain
+        </ButtonContainerMain>
+      
         <ButtonContainer
           isExpanded={this.props.expanded}
-          onClick={() => this.props.onClickLayer("md")}
+          onClick={() => this.props.onClickLayer("ehr")}
         >
-          <ButtonCaption>MD</ButtonCaption>
-          <Button>
-            <Square color="rgb(52, 152, 219)" />
+          <ButtonCaption>EHR</ButtonCaption>
+          <Button color={Colors.ehr}>
+            <SpanContext.Consumer>
+              {spanTheme => (
+                <Square color={Colors.ehr} isExpanded={spanTheme["ehr"]} />
+              )}
+            </SpanContext.Consumer>
           </Button>
         </ButtonContainer>
         <ButtonContainer
           animationDelay="100ms"
           isExpanded={this.props.expanded}
-          onClick={() => this.props.onClickLayer("narrative")}
+          onClick={() => this.props.onClickLayer("md")}
         >
-          <ButtonCaption>Narrative</ButtonCaption>
-          <Button>
-            <Square color="rgb(241, 196, 15)" />
+          <ButtonCaption>MD</ButtonCaption>
+          <Button color={Colors.md}>
+            <SpanContext.Consumer>
+              {spanTheme => (
+                <Square color={Colors.md} isExpanded={spanTheme["md"]} />
+              )}
+            </SpanContext.Consumer>
           </Button>
         </ButtonContainer>
         <ButtonContainer
           animationDelay="200ms"
           isExpanded={this.props.expanded}
-          onClick={() => this.props.onClickLayer("ehr")}
+          onClick={() => this.props.onClickLayer("narrative")}
         >
-          <ButtonCaption>EHR</ButtonCaption>
-          <Button>
-            <Square color="rgb(231, 76, 60)" />
+          <ButtonCaption>Narrative</ButtonCaption>
+          <Button color={Colors.narrative}>
+            <SpanContext.Consumer>
+              {spanTheme => (
+                <Square
+                  color={Colors.narrative}
+                  isExpanded={spanTheme["narrative"]}
+                />
+              )}
+            </SpanContext.Consumer>
           </Button>
         </ButtonContainer>
       </Layout>
@@ -48,6 +65,10 @@ class LayerButton extends React.Component {
 
 const Square = styled.div`
   background: ${props => props.color};
+  border-radius: 50%;
+  opacity: ${props => (props.isExpanded ? "1" : "0")};
+  transform: ${props => (props.isExpanded ? "scale(2.5)" : "none")};
+  transition 250ms opacity ease-out, 250ms transform ease-out;
   width: 10px;
   height: 10px;
 `;
@@ -91,7 +112,7 @@ const ButtonCaption = styled.div`
 const Button = styled.div`
   align-items: center;
   background: #fafafa;
-  border: 1px solid transparent;
+  border: 1px solid ${props => props.color || "transparent"};
   border-radius: 50%;
   box-shadow: 0 5px 10px -2px #ccc;
   cursor: pointer;
@@ -100,6 +121,7 @@ const Button = styled.div`
   justify-items: center;
   justify-self: center;
   outline: none;
+  overflow: hidden;
   transition: box-shadow 250ms, transform 250ms ease-out;
   width: 40px;
 
@@ -108,7 +130,7 @@ const Button = styled.div`
   }
 
   &:hover {
-    border: 1px solid #eee;
+    border: 1px solid ${props => props.color || "#eee"};
     box-shadow: 0 10px 10px -2px #cacaca;
     transform: translateY(-2px);
   }
@@ -158,6 +180,39 @@ const ButtonContainerMain = styled(ButtonContainer)`
     height: 60px;
     width: 60px;
   }
+`;
+
+const LayersImage = styled(props => (
+  <div className={props.className}>
+    <LayerImagePart type="narrative" z={2} ty="-15px" />
+    <LayerImagePart type="md" z={1} ty="0px" />
+    <LayerImagePart type="ehr" z={0} ty="15px" />
+  </div>
+))`
+  display: grid;
+  height: 25px;
+  width: 25px;
+`;
+
+const LayerImagePart = props => (
+  <SpanContext.Consumer>
+    {spanTheme => (
+      <LayerImagePartContent
+        color={spanTheme[props.type] ? Colors[props.type] : Colors.default}
+        {...props}
+      />
+    )}
+  </SpanContext.Consumer>
+);
+
+const LayerImagePartContent = styled.div`
+  box-shadow: 2px 2px 2px 0px #bebebe;
+  grid-row: 1 / last-line;
+  grid-column: 1 / last-line;
+  background-color: ${props => props.color};
+  transform: scaleY(0.5) translateY(${props => props.ty}) rotate(45deg);
+  transition: background-color 250ms ease-out;
+  z-index: ${props => props.z};
 `;
 
 export default LayerButton;
